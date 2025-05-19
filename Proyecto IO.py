@@ -141,8 +141,23 @@ while True:
             matriz,filas,columnas,valor_maximo_hurwicz = seleccion()
 
 
-            coeficiente = float(input("Ingrese el coeficiente de optimismo comprendido entre 0 a 1: "))
-            coeficiente_valores_minimos = (1-(coeficiente))
+            while True:
+
+                try:
+
+                    coeficiente = float(input("Ingrese el coeficiente de optimismo comprendido entre 0 a 1: "))
+                    coeficiente_valores_minimos = (1-(coeficiente))
+
+                    if 0 <= coeficiente <=1:
+                        coeficiente
+                        break
+                    else:
+                        print("\n¡Valor incorrecto!. Ingrese un valor entre 0 y 1")
+
+                
+                except ValueError:
+                        print("\n¡Valor invalido!. Ingrese un valor entre 0 y 1")
+
 
             valor_minimo= float("inf")
             valor_maximo=-float("inf")
@@ -172,7 +187,7 @@ while True:
                 print(f"\nAlternativa {q+1} = {resultado_final}")
                 valor_maximo_hurwicz = max(matriz_hurwicz)
       
-            print(f"\nLa mejor alternatica es :{valor_maximo_hurwicz}")
+            print(f"\nLa mejor alternativa es :{valor_maximo_hurwicz}")
 
 
 
