@@ -1,4 +1,5 @@
 
+
 import random
 
 
@@ -14,48 +15,57 @@ def menu():
 
 
 def seleccion():
+    while True:
+        try:    
+            elegir = int(input("Ingrese 0 para crear la matriz de forma manual\nIngrese 1 para crear la matriz de forma aleatoria: \n"));
 
-        print("Ingrese 0 para crear la matriz de forma manual\nIngrese 1 para crear la matriz de forma aleatoria\n");
-        elegir = int(input());
-        filas= int(input("\ningrese el numero de filas:  \n"))
-        columnas = int(input("\ningrese el numero de  columnas:  \n"))
-        matriz=[]
-        fila_actual=[]
-        combinacion = random.choice([random.randint, random.uniform])
-        probabilidad = (1/columnas)
+            if elegir  not in [0,1]:
+                print("¡Error! ingrese  0 o 1.")
+                continue
+            
+            filas= int(input("\ningrese el numero de filas:  \n"))
+            columnas = int(input("\ningrese el numero de  columnas:  \n"))
+            matriz=[]
+            fila_actual=[]
+            combinacion = random.choice([random.randint, random.uniform])
+            probabilidad = (1/columnas)
     
 
     # para generar matriz manual
-        if elegir == 0:
+            if elegir == 0:
     
-            for i in  range(filas):
-                fila_actual=[];
-                for j in range (columnas):
-                    valor = float(input((f"\nIngrese el valor para la fila{i}, columna{j}: ")));
-                    fila_actual.append(valor)
-                matriz.append(fila_actual)
-            for fila in matriz:
-                print(f"\n{fila}\n")
+                for i in  range(filas):
+                    fila_actual=[];
+                    for j in range (columnas):
+                        valor = float(input((f"\nIngrese el valor para la fila{i}, columna{j}: ")));
+                        fila_actual.append(valor)
+                    matriz.append(fila_actual)
+                for fila in matriz:
+                    print(f"\n{fila}\n")
 
-            return matriz,filas,columnas,probabilidad
+                return matriz,filas,columnas,probabilidad
         
         
 
 # para generar matriz aleatoria
 
-        elif elegir == 1:
+            elif elegir == 1:
 
-            for i in  range(filas):
-                fila_actual=[];
-                for j in range (columnas):
-                    valor = combinacion(-5000,5000)
-                    fila_actual.append(valor)
-                matriz.append(fila_actual)
-            for fila in matriz:
-                print(f"\n{fila}\n")
+                for i in  range(filas):
+                    fila_actual=[];
+                    for j in range (columnas):
+                        valor = combinacion(-5000,5000)
+                        fila_actual.append(valor)
+                    matriz.append(fila_actual)
+                for fila in matriz:
+                    print(f"\n{fila}\n")
         
-                
-            return matriz,filas,columnas,probabilidad
+                return matriz,filas,columnas,probabilidad
+
+        except ValueError:
+            print("¡Entrada inválida! Ingrese una opción valida (0 o 1).")
+
+        
               
 while True:
     menu()
@@ -70,7 +80,7 @@ while True:
         if opcion == 1:
             print("Usted ha elegido el criterio de Laplace\n")
 
-            matriz,filas, columnas, probabilidad =seleccion()
+            matriz,filas,columnas,valor_Laplace1 =seleccion()
 
             valor_Laplace=0;
 
@@ -91,7 +101,7 @@ while True:
         elif opcion == 2:
             print("\nUsted ha elegido el criterio de Optimista\n")
 
-            matriz,filas,columnas,_ = seleccion()
+            matriz,filas,columnas,valor_optimista = seleccion()
 
             valor_optimista = 0
             for m in range (filas):
@@ -114,7 +124,7 @@ while True:
         elif opcion == 3:
             print("\nUsted ha elegido el criterio pesimista\n")
 
-            matriz,columnas,filas,_ = seleccion()
+            matriz,columnas,filas,valor_minimo= seleccion()
 
             valor_pesimista = -float("inf")
         
@@ -130,7 +140,7 @@ while True:
                     valor_pesimista = valor_minimo
 
        
-            print(f"\nSégun el criterio pesimista se debe elegir la alternativa: {valor_pesimista}")
+            print(f"\nLa  mejor alternativa: {valor_pesimista}")
 
 
 
@@ -239,12 +249,12 @@ while True:
             print(f"\nEl valor Esperado es:{valor_central}")
 
 
-        #elif opcion == 6:
-            #print("\n¡Gracias, vuelva pronto\n")
-            #break
-        #else:
-           # print("\n¡Opción inválida! Por favor, ingrese una opción válida (1 a 6).\n")
-           # menu()
+        elif opcion == 6:
+            print("\n¡Gracias, vuelva pronto\n")
+            break
+        else:
+            print("\n¡Opción inválida! Por favor, ingrese una opción válida (1 a 6).\n")
+            menu()
 
     except ValueError:
             print("\n¡Entrada inválida! Por favor, ingrese una opción válida (1 a 6)\n")
