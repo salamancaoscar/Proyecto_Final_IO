@@ -91,7 +91,7 @@ while True:
         elif opcion == 2:
             print("\nUsted ha elegido el criterio de Optimista\n")
 
-            matriz,columnas,filas,_ = seleccion()
+            matriz,filas,columnas,_ = seleccion()
 
             valor_optimista = 0
             for m in range (filas):
@@ -131,16 +131,48 @@ while True:
 
        
             print(f"\nSégun el criterio pesimista se debe elegir la alternativa: {valor_pesimista}")
+
+
+
+#Criterio de Hurwicz
                 
-        #elif opcion == 4:
-            #print("\nUsted ha elegido el criterio de Hurwicz\n")
+        elif opcion == 4:
+            print("\nUsted ha elegido el criterio de Hurwicz\n")
+            matriz,filas,columnas,valor_maximo_hurwicz = seleccion()
 
 
+            coeficiente = float(input("Ingrese el coeficiente de optimismo comprendido entre 0 a 1: "))
+            coeficiente_valores_minimos = (1-(coeficiente))
+
+            valor_minimo= float("inf")
+            valor_maximo=-float("inf")
+            matriz_hurwicz=[]
+            resultado_min=0
+            resultado_max=0
+            resultado_final=0
+            valor_maximo_hurwicz=0
 
 
+            for q in range(filas):
+                valor_mayor_fila = matriz[q][0]
+                valor_menor_fila= matriz[q][0]
 
+                for r in range (1,columnas):
+                    if matriz[q][r]> valor_mayor_fila:
+                        valor_mayor_fila=matriz[q][r]
 
+                    if matriz[q][r]< valor_menor_fila:
+                        valor_menor_fila=matriz[q][r]
+       
+                resultado_max = valor_mayor_fila*coeficiente                                
+                resultado_min = valor_menor_fila* coeficiente_valores_minimos
+                resultado_final= resultado_max +resultado_min
 
+                matriz_hurwicz.append(resultado_final)
+                print(f"\nAlternativa {q+1} = {resultado_final}")
+                valor_maximo_hurwicz = max(matriz_hurwicz)
+      
+            print(f"\nLa mejor alternatica es :{valor_maximo_hurwicz}")
 
 
 
@@ -188,7 +220,7 @@ while True:
                 print(f"\nAlternativa {i+1} = {valor_maximo_fila} ")
 
             valores_filas.sort()
-            valor_central = (valores_filas[1])
+            valor_central = min(valores_filas)
             print(f"\nEl valor Esperado es:{valor_central}")
 
 
@@ -201,5 +233,3 @@ while True:
 
     except ValueError:
             print("\n¡Entrada inválida! Por favor, ingrese una opción válida (1 a 6)\n")
-           
-
