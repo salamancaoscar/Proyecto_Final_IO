@@ -29,6 +29,7 @@ def seleccion():
             fila_actual=[]
             combinacion = random.choice([random.randint, random.uniform])
             probabilidad = (1/columnas)
+            
     
 
     # para generar matriz manual
@@ -77,13 +78,15 @@ while True:
 
 #criterio de Laplace
 
+        
+
         if opcion == 1:
             print("Usted ha elegido el criterio de Laplace\n")
 
-            matriz,filas,columnas,valor_Laplace1 =seleccion()
+            matriz,filas,columnas,probabilidad =seleccion()
 
             valor_Laplace=0;
-
+            
             for k in range(filas):
                 valor_mayor = 0
                 for l in range(columnas):
