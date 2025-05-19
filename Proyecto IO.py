@@ -96,7 +96,7 @@ while True:
 
                 if valor_mayor >valor_Laplace:
                     valor_Laplace = valor_mayor
-            print(f"\nEl valor esperado es:  {valor_Laplace}")
+            print(f"\nEl valor esperado, según el criterio de Laplace es:{valor_Laplace}")
             
         
 #Citerio Optimista
@@ -118,7 +118,7 @@ while True:
                     valor_optimista= comparar_fila
 
        
-            print(f"\nEl mejor valor es : {valor_optimista}")
+            print(f"\nEl valor esperado, según el criterio optimista es:{valor_optimista}")
             
        
 #Citerio Pesimista
@@ -127,7 +127,7 @@ while True:
         elif opcion == 3:
             print("\nUsted ha elegido el criterio pesimista\n")
 
-            matriz,columnas,filas,valor_minimo= seleccion()
+            matriz,filas,columnas,valor_pesimista= seleccion()
 
             valor_pesimista = -float("inf")
         
@@ -143,7 +143,7 @@ while True:
                     valor_pesimista = valor_minimo
 
        
-            print(f"\nLa  mejor alternativa: {valor_pesimista}")
+            print(f"\nEl valor esperado, según el criterio pesismista es :{valor_pesimista}")
 
 
 
@@ -200,7 +200,7 @@ while True:
                 print(f"\nAlternativa {q+1} = {resultado_final}")
                 valor_maximo_hurwicz = max(matriz_hurwicz)
       
-            print(f"\nLa mejor alternativa es :{valor_maximo_hurwicz}")
+            print(f"\nEl valor esperado, según el criterio de Hurwicz  es :{valor_maximo_hurwicz}")
 
 
 
@@ -249,11 +249,11 @@ while True:
 
             valores_filas.sort()
             valor_central = min(valores_filas)
-            print(f"\nEl valor Esperado es:{valor_central}")
+            print(f"\nEl valor Esperado, según el criterio de Savage es:{valor_central}")
 
 
         elif opcion == 6:
-            print("\n¡Gracias, vuelva pronto\n")
+            print("\n¡Hasta pronto\n")
             break
         else:
             print("\n¡Opción inválida! Por favor, ingrese una opción válida (1 a 6).\n")
