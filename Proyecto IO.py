@@ -1,5 +1,5 @@
 
-mport random
+import random
 
 
 def menu():
