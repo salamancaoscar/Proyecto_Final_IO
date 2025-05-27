@@ -1,5 +1,7 @@
 
 
+
+
 import random
 
 
@@ -109,10 +111,10 @@ while True:
             valor_optimista = 0
             for m in range (filas):
                 comparar_fila = matriz[m][0]
-                for n in range(1,filas):
+                for n in range(1,columnas):
                     if matriz[m][n]> comparar_fila:
                         comparar_fila = matriz[m][n]
-                print(f"\nAlternativa {n+1} = {comparar_fila}")
+                print(f"\nAlternativa {m+1} = {comparar_fila}")
             
                 if comparar_fila>valor_optimista:
                     valor_optimista= comparar_fila
